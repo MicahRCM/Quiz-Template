@@ -1,0 +1,418 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+div:focus {
+    outline: 0;
+}
+
+.answer-typed-input-form:focus {
+    border: 0;
+    box-shadow: initial !important;
+    background: none;
+    color: rgb(112, 185, 199);
+}
+
+/* Experimental fading */
+@-webkit-keyframes fadeout {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Vertically expanding text input box which allows data-text start */
+div[contenteditable] {
+    height: inherit;
+    max-height: 200px;
+    overflow: auto;
+}
+
+[contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-text)
+}
+
+/* Vertically expanding text input box which allows data-text end */
+
+.fast-transition {
+    transition: top .5s;
+}
+
+/* Transition & Modifier Classes */
+
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear;
+    -moz-transition: opacity 0.15s linear;
+    -o-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+.selected-answer {
+    background-color: rgba(115, 190, 200, 0.4);
+    color: #0c6165;
+    box-shadow: rgba(62, 96, 138, 1) 0px 0px 0px 1px inset;
+}
+
+.unselected-answer {
+    box-shadow: rgba(115, 190, 200, 0.6) 0px 0px 0px 1px inset;
+}
+
+.radian-answer-border {
+    border-radius: 50%;
+}
+
+/* End Transition & Modifier Classes */
+
+.page-header-container {
+    height: 50px;
+    background: #fff;
+    position: relative;
+    margin-bottom: 3em;
+}
+
+.page-header-button-container {
+    position: absolute;
+    right: 30px;
+    top: 8px;
+
+}
+
+.page-header-button {
+    background-color: inherit;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: .25rem 3rem;
+    font-size: 14px;
+    height: 33px;
+    width: 150px;
+}
+
+.page-header-button:hover {
+    border: 1px solid #26b;
+    cursor: pointer;
+}
+
+.quiz-header-container {
+    background-color: rgba(205, 234, 239, 0.9);
+    position: relative;
+    margin-bottom: 3em;
+    height: 50px;
+    z-index: 2;
+}
+
+.quiz-name-text-container {
+    position: absolute;
+    top: 25%;
+    padding-left: 30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.quiz-name-text {
+    color: rgb(56, 189, 207);
+    font-size: 19px;
+}
+
+.quiz-page-template-container {
+    background-color: #f1f9fa;
+    padding: 0px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.quiz-main-page {
+    text-align: center;
+}
+
+.quiz-question-text-container {
+    margin-bottom: 30px;
+}
+
+.quiz-question-text-item {
+    max-width: 100%;
+    font-size: 24px;
+    line-height: 32px;
+    color: rgb(56, 189, 207);
+    margin: 0px;
+}
+
+.quiz-answer-list {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.quiz-answer-text-container {
+    position: relative;
+}
+
+.quiz-answer-text-container-single {
+    color: rgb(115, 190, 200);
+    opacity: 1;
+    will-change: opacity;
+    height: auto;
+    border-radius: 4px;
+    min-width: 75px;
+    min-height: 40px;
+    flex-grow: 1;
+    align-items: center;
+    display: flex;
+    padding: 4px 12px 4px;
+    margin-top: 10px;
+}
+
+.quiz-answer-text-container-single:hover {
+    background-color: rgba(115, 190, 200, 0.3);
+    cursor: pointer;
+}
+
+.quiz-answer-text-container-single:hover .press-key-label {
+    display: inherit;
+}
+
+.quiz-answer-text-container-single:hover .numerator-radio {
+    border-radius: 0 50% 50% 0;
+}
+
+/* Added a "dynamic" width as a catch-all until a cleaner solution is implented for long questions/answers */
+.quiz-question-container {
+    display: inline-block;
+    text-align: left;
+    width: 75%;
+    position: relative;
+    top: 0px;
+}
+
+.move-container-up {
+    top: -50vh !important;
+}
+
+.move-container-down {
+    top: 100vh !important;
+}
+
+/* 'forwards' makes the ending animation frame permanent */
+.fadeout {
+    -webkit-animation: fadeout .3s linear forwards !important;
+    animation: fadeout .3s linear forwards !important;
+}
+
+.fadein {
+    -webkit-animation: fadein .5s linear forwards !important;
+    animation: fadein .5s linear forwards !important;
+}
+
+
+
+.answer-key-numerator {
+    position: relative;
+    width: 24px;
+    min-width: 22px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: sans-serif;
+    border: 1px solid rgba(115, 190, 200, 0.6);
+    font-weight: bold;
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    box-shadow: transparent 0px 0px 0px 1px;
+    margin: 8px;
+    -webkit-box-align: center;
+    justify-content: center;
+}
+
+.answer-typed-input-form {
+    line-height: 40px;
+    background: 0;
+    border: 0px;
+    border-bottom: 1px solid rgba(88, 176, 181, 0.5);
+    border-radius: 0px;
+    font-size: 30px;
+    color: rgba(121, 193, 207, 0.6);
+    padding-left: 0px;
+}
+
+.answer-typed-input-form:hover {
+    cursor: text;
+}
+
+.press-label-checkbox {
+    border-radius: 2px;
+}
+
+.press-label-radio {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.numerator-radio {
+    border-radius: 50%;
+}
+
+.numerator-checkbox {
+    border-radius: 2px;
+}
+
+.press-key-label {
+    display: none;
+    width: 42px;
+    border-right: 0px;
+    padding-left: 6px;
+    position: absolute;
+    left: -29px;
+    z-index: 1;
+    border-right: 0px;
+}
+
+.question-iteration-container {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}
+
+.question-iteration-container-single {
+    padding: .5rem .75rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+    font-size: 20px;
+    color: white;
+    background-color: #BBE0E5;
+    border: 0px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.question-iteration-container-single:hover {
+    cursor: pointer;
+    background: #C5E5E9;
+}
+
+.progress-bar-container {
+    position: absolute;
+    top: 12px;
+    right: 100px;
+    width: 15rem;
+}
+
+.progress-bar-text {
+    font-size: 14px;
+    color: #c8e4e8;
+}
+
+.quiz-completion-outer-progress-bar {
+    background-color: #bfdfe3;
+    display: flex;
+    overflow: hidden;
+    font-size: .75rem;
+    border-radius: .25rem;
+}
+
+.quiz-completion-inner-progress-bar {
+    background-color: rgb(62, 162, 174);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    transition: width .6s ease;
+}
+
+.unselected-answer-button {
+    background-color: rgba(241, 249, 250, 1);
+    color: rgb(115, 190, 200);
+}
+
+.selected-answer-button {
+    color: rgba(241, 249, 250, 1);
+    background-color: rgb(115, 190, 200);
+}
+
+.quiz-continue-button {
+    position: relative;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 12px 0px;
+    min-height: 40px;
+    background-color: #bbe0e5;
+    color: #2d6c75;
+    outline: none;
+    margin: 0px;
+    padding: 6px 14px;
+    border-color: transparent;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.quiz-continue-button:hover {
+    background-color: #8abec5;
+}
+
+.quiz-continue-text {
+    font-size: 13px;
+    margin-left: 10px;
+    color: #51c5d4;
+}
+
+.question-text-form {
+    border-radius: .25rem 0px 0px .25rem;
+}
+
+/* Flips div for the next button containing the ^ symbol */
+.icon-flipped {
+    -moz-transform: scale(1, -1);
+    -webkit-transform: scale(1, -1);
+    -o-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    transform: scale(1, -1);
+}
+
+.question-iteration-icon {
+    line-height: 1;
+    font-weight: 1000;
+    position: relative;
+    top: 2px;
+}

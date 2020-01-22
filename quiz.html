@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Quiz Template</title>
+    <link rel="stylesheet" type="text/css" href="quiz.css">
+</head>
+
+<body>
+    <div class="quiz-page-template-container">
+        <div class="quiz-header-container">
+            <div class="quiz-name-text-container">
+                <span class="quiz-name-text"> Quiz Number 1 </span>
+            </div>
+            <div class="page-header-button-container">
+                <button class="page-header-button">
+                    Exit
+                </button>
+            </div>
+        </div>
+        <div class="quiz-main-page" id="quiz-main-page">
+            <div class="quiz-question-container" id="quiz-question-container">
+                <div class="quiz-question-text-container" id="quiz-question-text-container">
+                </div>
+                <div class="quiz-answer-text-container" id="quiz-answer-text-container">
+                    <ul class="quiz-answer-list" id="quiz-answer-list">
+                    </ul>
+                </div>
+            </div>
+            <div class="question-iteration-container">
+                <div class="progress-bar-container">
+                    <span class="progress-bar-text" id="progress-bar-text"></span>
+                    <div class="progress quiz-completion-outer-progress-bar" style="height: 3px;">
+                        <div class="quiz-completion-inner-progress-bar" id="quiz-progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="question-iteration-container-single" id="previous-question-load">
+                    <span class="question-iteration-icon"> ^ </span>
+                </div>
+                <div class="icon-flipped question-iteration-container-single" id="next-question-load">
+                    <span class="question-iteration-icon"> ^ </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="quiz.js"></script>
+</body>
+
+</html>
